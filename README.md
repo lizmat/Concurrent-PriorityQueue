@@ -90,17 +90,24 @@ PARAMETERIZATION
 
 ```raku
 # only allow Int as key
-my @b = Concurrent::PriorityQueue[Int];
+class IntQueue does Concurrent::PriorityQueue[Int] { }
+my @b is IntQueue;
 ```
 
 By default, `Any` defined value can serve as key. This can be parameterized by specifying a type, e.g. `Int` to only allow integers as keys.
 
 ```raku
 # only allow Int as key with <=> order semantics
-my @b = Concurrent::PriorityQueue[ Int, :cmp(&[<=>]) ];
+class NumericQueue does Concurrent::PriorityQueue[Int, :cmp(&[<=>])] { }
+my @b is NumericQueue;
 ```
 
 By default the `infix:<cmp>` comparator is used to determine the order in which values will be produced, This can be parameterized with the `:cmp` named argument, e.g. `:cmp(&infix«<=>»)` to use numerical comparisons only.
+
+INSPIRATION
+===========
+
+This module was inspired by Rob Hoelz's [PriorityQueue](https://github.com/hoelzro/p6-priorityqueue) module.
 
 AUTHOR
 ======

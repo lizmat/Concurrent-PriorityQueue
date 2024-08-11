@@ -18,7 +18,10 @@
   "resources": [
   ],
   "source-url": "https://github.com/lizmat/Concurrent-PriorityQueue.git",
-  "tags": [ "CONCURRENT", "PRIORITY", "QUEUE"
+  "tags": [
+    "CONCURRENT",
+    "PRIORITY",
+    "QUEUE"
   ],
   "test-depends": [
   ],
