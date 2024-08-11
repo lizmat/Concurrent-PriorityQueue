@@ -1,0 +1,22 @@
+use Test;
+use Concurrent::PriorityQueue;
+
+plan 1;
+
+my @a is Concurrent::PriorityQueue;
+
+my $starts := 64;
+my $pushes := 500;
+
+my @promises;
+for ^$starts {
+    @promises.push: start {
+        @a.push($_) for ^$pushes;
+    }
+}
+await @promises;
+
+my @b is List = (^$pushes).map({ (Pair.new($_,$_) xx $starts).Slip });
+is-deeply @a.List, @b;
+
+# vim: ft=raku expandtab sw=4

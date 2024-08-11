@@ -6,6 +6,7 @@
   "build-depends": [
   ],
   "depends": [
+    "Array::Sorted::Util:auth<zef:lizmat>:ver<0.0.10>"
   ],
   "description": "provide a thread-safe priority queue",
   "license": "Artistic-2.0",
@@ -17,7 +18,7 @@
   "resources": [
   ],
   "source-url": "https://github.com/lizmat/Concurrent-PriorityQueue.git",
-  "tags": [
+  "tags": [ "CONCURRENT", "PRIORITY", "QUEUE"
   ],
   "test-depends": [
   ],

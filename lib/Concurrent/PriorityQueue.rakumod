@@ -33,12 +33,12 @@ role Concurrent::PriorityQueue[
     }
     multi method push(::?CLASS:D: TYPE:D $_) {
         $!lock.protect: {
-            inserts @!keys, $_, @!values, $_, :&cmp;
+            inserts @!keys, $_, @!values, $_, :&cmp, :force;
         }
     }
     multi method push(::?CLASS:D: Pair:D $_) {
         $!lock.protect: {
-            inserts @!keys, .key, @!values, .value, :&cmp
+            inserts @!keys, .key, @!values, .value, :&cmp, :force;
         }
     }
 
