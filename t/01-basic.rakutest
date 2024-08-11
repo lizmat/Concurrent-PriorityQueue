@@ -1,0 +1,38 @@
+use Test;
+use Concurrent::PriorityQueue;
+
+plan 26;
+
+my class A does Concurrent::PriorityQueue { }
+my class B does Concurrent::PriorityQueue[Int] { }
+my class C does Concurrent::PriorityQueue[Int, :cmp(&infix:«<=>»)] { }
+
+my @a is A = 666, 42, 137;
+my @b is B = 666, 42, 137;
+my @c is C = 666, 42, 137;
+
+for @a, @b, @c -> @a {
+
+    is-deeply @a.List, (42 => 42, 137 => 137, 666 => 666),
+      'first List ok';
+
+    is-deeply @a.shift, 42, 'first shift ok';
+    is-deeply @a.shift, 137, 'second shift ok';
+    is-deeply @a.shift, 666, 'third shift ok';
+
+    @a.push(666 => "baz");
+    @a.push( 42 => "foo");
+    @a.push(137 => "bar");
+
+    is-deeply @a.List, (42 => "foo", 137 => "bar", 666 => "baz"),
+      'second List ok';
+
+    is-deeply @a.pop, "baz", 'first pop ok';
+    is-deeply @a.pop, "bar", 'second pop ok';
+    is-deeply @a.pop, "foo", 'third pop ok';
+}
+
+dies-ok { @b.push("foo") }, "cannot push 'foo' to b";
+dies-ok { @c.push("foo") }, "cannot push 'foo' to c";
+
+# vim: ft=raku expandtab sw=4
