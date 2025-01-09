@@ -1,3 +1,4 @@
 .precomp/
 /Concurrent-PriorityQueue-*
 /releases/
+*.rakucov

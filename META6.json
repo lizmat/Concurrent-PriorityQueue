@@ -6,7 +6,7 @@
   "build-depends": [
   ],
   "depends": [
-    "Array::Sorted::Util:auth<zef:lizmat>:ver<0.0.10>"
+    "Array::Sorted::Util:auth<zef:lizmat>:ver<0.0.11+>"
   ],
   "description": "provide a thread-safe priority queue",
   "license": "Artistic-2.0",
