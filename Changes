@@ -1,6 +1,8 @@
 Revision history for Concurrent::PriorityQueue
 
 {{$NEXT}}
+
+0.0.2  2025-01-09T16:22:06+01:00
     - Bump dependency on Array::Sorted::Util
     - Update copyright year
 
